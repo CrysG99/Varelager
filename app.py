@@ -46,7 +46,7 @@ def legg_til_vare():
 
 
 
-
+@app.route('')
 
 
 
