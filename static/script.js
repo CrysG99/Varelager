@@ -6,19 +6,50 @@ async function hentVarer() {
 
 function visVarer(varer) {
     const div = document.getElementById("vareliste");
-    let html = "<table><tr><th>Varenummer</th><th>Navn</th><th>Kategori</th><th>Antall</th><th>Pris</th><th>Handling</th></tr>";
+    let html = `
+        <table>
+            <tr>
+                <th>Varenummer</th>
+                <th>Navn</th>
+                <th>Kategori</th>
+                <th>Antall</th>
+                <th>Pris</th>
+                <th>Handling</th>
+            </tr>`;
+
     varer.forEach(v => {
-        html += `<tr>
-            <td>${v.varenummer}</td>
-            <td>${v.navn}</td>
-            <td>${v.kategori}</td>
-            <td><input type="number" value="${v.antall}" onchange="oppdaterAntall(${v.varenummer}, this.value)"></td>
-            <td>${v.pris} kr</td>
-            <td><button onclick="slettVare(${v.varenummer})">Slett</button></td>
-        </tr>`;
+        html += `
+            <tr data-varenummer="${v.varenummer}">
+                <td>${v.varenummer}</td>
+                <td>${v.navn}</td>
+                <td>${v.kategori}</td>
+                <td><input type="number" class="antall-input" value="${v.antall}"></td>
+                <td>${v.pris} kr</td>
+                <td><button class="slett-knapp">Slett</button></td>
+            </tr>`;
     });
+
     html += "</table>";
     div.innerHTML = html;
+
+    // Event listeners for slett-knapper
+    document.querySelectorAll(".slett-knapp").forEach(button => {
+        button.addEventListener("click", event => {
+            const row = event.target.closest("tr");
+            const varenummer = row.getAttribute("data-varenummer");
+            slettVare(Number(varenummer));
+        });
+    });
+
+    // Event listeners for oppdatering av antall
+    document.querySelectorAll(".antall-input").forEach(input => {
+        input.addEventListener("change", event => {
+            const row = event.target.closest("tr");
+            const varenummer = row.getAttribute("data-varenummer");
+            const nyttAntall = event.target.value;
+            oppdaterAntall(Number(varenummer), Number(nyttAntall));
+        });
+    });
 }
 
 async function leggTilVare() {
@@ -68,4 +99,10 @@ async function visRapport() {
     `;
 }
 
-window.onload = hentVarer;
+document.addEventListener("DOMContentLoaded", () => {
+    hentVarer();
+
+    document.getElementById("legg-til-knapp").addEventListener("click", leggTilVare);
+    document.getElementById("sok-knapp").addEventListener("click", sokVare);
+    document.getElementById("rapport-knapp").addEventListener("click", visRapport);
+});

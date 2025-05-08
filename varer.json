@@ -1,0 +1,16 @@
+[
+    {
+        "navn": "Vaskemaskin",
+        "kategori": "Hvitevare",
+        "antall": 1,
+        "pris": 5000,
+        "varenummer": 1
+    },
+    {
+        "navn": "Vaskemaskin",
+        "kategori": "Hvitevare",
+        "antall": 5,
+        "pris": 5000,
+        "varenummer": 2
+    }
+]

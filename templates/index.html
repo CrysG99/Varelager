@@ -4,30 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varebehandling</title>
+    <title>Lagersystem</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
-    <h1> Lagersystem: </h1>
+    <h1>Lagersystem</h1>
 
-    <h2> Registrer ny vare: </h2>
-    <input type="text" id="navn" placeholder="Navn på vare:">
-    <input type="text" id="kategori" placeholder="Kategori:">
-    <input type="number" id="antall" placeholder="Antall:">
-    <input type="number" id="pris" placeholder="Pris:">
-    <button id="leggtilvare">Legg til</button>
+    <h2>Registrer ny vare</h2>
+    <input type="text" id="navn" placeholder="Navn">
+    <input type="text" id="kategori" placeholder="Kategori">
+    <input type="number" id="antall" placeholder="Antall">
+    <input type="number" id="pris" placeholder="Pris">
+    <button id="legg-til-knapp">Legg til</button>
 
-    <h2> Søk etter vare: </h2>
-    <input type="text" id="sokestreng" placeholder="Navn eller varenummer:">
-    <button id="sokvare">Søk</button>
+    <h2>Søk etter vare</h2>
+    <input type="text" id="sokestreng" placeholder="Navn eller varenummer">
+    <button id="sok-knapp">Søk</button>
 
-    <h2> Alle varer </h2>
+    <h2>Alle varer</h2>
     <div id="vareliste"></div>
 
-    <h2> Rapport </h2>
-    <button onclick="visRapport()">Vis rapport</button>
+    <h2>Rapport</h2>
+    <button id="rapport-knapp">Vis rapport</button>
     <div id="rapport"></div>
+
+    <script src="../static/script.js"></script>
 </body>
 
 </html>
