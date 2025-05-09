@@ -1,16 +1,23 @@
 [
     {
-        "navn": "Vaskemaskin",
-        "kategori": "Hvitevare",
-        "antall": 1,
-        "pris": 5000,
+        "navn": "TV",
+        "kategori": "Elektronikk",
+        "antall": 10,
+        "pris": null,
         "varenummer": 1
     },
     {
-        "navn": "Vaskemaskin",
-        "kategori": "Hvitevare",
-        "antall": 5,
-        "pris": 5000,
+        "navn": "PC",
+        "kategori": "Elektronikk",
+        "antall": 20,
+        "pris": 10000,
         "varenummer": 2
+    },
+    {
+        "navn": "Telefon",
+        "kategori": "Elektronikk",
+        "antall": 15,
+        "pris": 6999,
+        "varenummer": 3
     }
 ]

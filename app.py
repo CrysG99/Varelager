@@ -25,7 +25,7 @@ def finn_vare(varenummer):
     for v in varer:
         if v['varenummer'] == varenummer:
             return v
-        return None
+    return None
     
     
 
@@ -60,27 +60,23 @@ def oppdater_vare(varenummer):
     varer = last_data()
     for v in varer:
         if v['varenummer'] == varenummer:
-            v['antall'] = data.get('antall', v['antall'])
+            if 'antall' in data:
+                v['antall'] = data.get('antall', v['antall'])
+                v['pris'] = data.get('pris', v['pris'])
             lagre_data(varer)
             return jsonify({"melding": "vare oppdatert", "vare": v})
-        return jsonify({"feil": "vare ikke funnet"}), 404
+    return jsonify({"feil": "vare ikke funnet"}), 404
 
 
 
 @app.route('/vare/<int:varenummer>', methods=['DELETE'])
-def slett_vare():
-    with open(DATAFIL, "r") as f:
-        varer = json.load(f)
-
+def slett_vare(varenummer):
+    varer = last_data()
     ny_liste = [v for v in varer if v["varenummer"] != varenummer]
-
     if len(ny_liste) == len(varer):
         return jsonify({"melding": "Varen ble ikke funnet"}), 404
-    
-with open(DATAFIL, "w") as f:
-    json.dump(ny_liste, f, indent=2)
-
-return jsonify({"melding": "Vare slettet"})
+    lagre_data(ny_liste)
+    return jsonify({"melding": "Vare slettet"})
 
 @app.route('/rapport', methods=['GET'])
 def rapport():

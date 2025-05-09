@@ -11,16 +11,23 @@
 <body>
     <h1>Lagersystem</h1>
 
-    <h2>Registrer ny vare</h2>
-    <input type="text" id="navn" placeholder="Navn">
-    <input type="text" id="kategori" placeholder="Kategori">
-    <input type="number" id="antall" placeholder="Antall">
-    <input type="number" id="pris" placeholder="Pris">
-    <button id="legg-til-knapp">Legg til</button>
+    <div class="registrer">
+        <h2>Registrer ny vare</h2>
+        <input type="text" id="navn" placeholder="Navn">
+        <input type="text" id="kategori" placeholder="Kategori">
+        <input type="number" id="antall" placeholder="Antall">
+        <input type="number" id="pris" placeholder="Pris">
+        <button id="legg-til-knapp">Legg til</button>
+    </div>
 
     <h2>Søk etter vare</h2>
     <input type="text" id="sokestreng" placeholder="Navn eller varenummer">
     <button id="sok-knapp">Søk</button>
+
+    <div id="sokeresultat"></div>
+
+
+    <hr>
 
     <h2>Alle varer</h2>
     <div id="vareliste"></div>
